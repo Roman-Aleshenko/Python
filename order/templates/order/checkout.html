@@ -1,0 +1,90 @@
+{% extends 'main/layout.html' %}
+
+
+{% block title %}Корзина{% endblock %}
+
+
+{% block content %}
+   <div class="checkout_home">
+       <div class="row">
+           {% if products_in_basket %}
+
+               <div class="col-lg-12">
+                   <h3 class="text-center">Товары в корзине</h3>
+
+                   <form class="form-horizontal" method="post" style="margin-top: 40px">{% csrf_token %}
+
+                       <div class="form-group">
+                            <div class="col-lg-3">
+                               <label>Имя</label>
+                               <span class="form-error">{{ form.name.errors }}</span>
+                               <input type="text" name="{{ form.name.html_name }}" class="form-control"
+                                    value="{{request.POST.name}}"
+                               >
+                            </div>
+                       </div>
+                       <div class="form-group">
+                           <div class="col-lg-3">
+                               <label>Телефон</label>
+                               <span class="form-error">{{ form.phone.errors }}</span>
+                               <input type="text" name="{{ form.phone.html_name }}" class="form-control"
+                                    value="{{request.POST.phone}}"
+                               >
+                           </div>
+                       </div>
+
+                       <table class="table text-center">
+                           <thead>
+                               <tr>
+                                   <th>Название блюда</th>
+                                   <th>Количество блюд</th>
+                                   <th>Цена за блюдо</th>
+                                   <th>Общая цена</th>
+                               </tr>
+                           </thead>
+                           <tbody>
+                                {% for product_in_basket in products_in_basket %}
+                                    <tr>
+                                        <td>
+                                            {{ product_in_basket.product.name }}
+                                        </td>
+                                        <td>
+                                            <input value="{{ product_in_basket.nmb }}" type="number"
+                                                   class="product-in-basket-nmb" name="product_in_basket_{{ product_in_basket.id }}">
+                                        </td>
+                                        <td>
+                                            <span class="product-price">
+                                                {{ product_in_basket.price_per_item }} ₽
+                                            </span>
+
+                                        </td>
+                                        <td>
+                                            <span class="total-product-in-basket-amount">
+                                                {{ product_in_basket.total_price }} ₽
+                                            </span>
+                                        </td>
+                                    </tr>
+                               {% endfor %}
+                           </tbody>
+                       </table>
+
+                       <div class="text-right" style="float:right; margin-right: 100px">
+                           <b>Сумма заказа: </b> <span id="total_order_amount" ></span> ₽
+                       </div>
+                       <br>
+                       <div class="text-right" style="float:right; margin-right:105px; margin-top:30px;">
+                            <button type="submit" class="btn btn-primary btn-lg">Заказать</button>
+                        </div>
+                   </form>
+               </div>
+           {% else %}
+                <h3 class="text-center" style="color:#703b94; margin-top: 350px;" >В вашей карзине нет блюд!</h3>
+                <a href="{% url 'product_home' %}" >
+                    <button class="btn btn-success" style="width:85px; float:left;margin-left:560px; margin-top:20px;">
+                        В меню</button>
+                </a>
+           {% endif %}
+       </div>
+   </div>
+{% endblock %}
+

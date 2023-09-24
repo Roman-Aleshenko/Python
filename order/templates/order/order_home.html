@@ -1,0 +1,31 @@
+{% extends 'main/layout.html' %}
+
+
+{% block title %}Заказы{% endblock %}
+
+
+{% block content %}
+   <div class="orders_home_container">
+
+       <h1 class="text-center">Заказы</h1>
+       <div class="order_area">
+
+           {% for el in orders_display %}
+                <div class="element_order text-center">
+                    <p class="text-center"><b>Заказ: {{ el.id }}</b></p>
+                    <b>На имя: </b>{{ el.customer_name }}<br>
+                    <b>Состав: </b><br>
+                    {% for item in products_in_order %}
+                    {% if item.order.id == el.id %}
+                    {{ item.product.name }} x{{ item.nmb }} - {{ item.total_price }} ₽<br>
+                    {% endif %}
+                    {% endfor %}
+                    <b>{{el.status}}<br></b>
+                    <br><b>Итого: </b>{{el.total_price}} ₽
+                </div>
+           {% endfor %}
+       </div>
+
+
+   </div>
+{% endblock %}
