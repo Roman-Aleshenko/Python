@@ -1,0 +1,205 @@
+{% extends 'main/layout.html' %}
+
+
+{% block title %}Меню{% endblock %}
+
+
+{% block content %}
+    <div class="products_home">
+        {% for product_image in products_images %}
+            <div class="dish">
+                <div>
+                    <img src="{{ product_image.image.url }}" class="img-responsive">
+                </div>
+                <div>
+                    <div class="heading"><h6>{{ product_image.product.name }} {{ product_image.product.price }} ₽</h6></div>
+                    <div class="main_text"><p>{{ product_image.product.description }}</p></div>
+                </div>
+
+                <div class="add_del">
+
+
+
+                                                                    <!--  Гороховый суп  -->
+                    {% if product_image.product.id == 4 %}
+                    <form id="form_buying_product" class="form-inline" action="{% url 'basket_adding' %}">{% csrf_token %}
+                        <div class="form-group">
+                            <input type="number" class="form-control" name="number" id="number">
+
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" id="submit_btn_gorohoviy" class="btn btn-success"
+                                    data-product_id = "{{ product_image.product.id }}"
+                                    data-name = "{{ product_image.product.name }} "
+                                    data-price = "{{ product_image.product.price }}"
+                            >
+                                В корзину
+                            </button>
+                        </div>
+                    </form>
+                    {% endif %}
+                                                                         <!--  Грибной суп  -->
+                    {% if product_image.product.id == 5 %}
+                    <form id="form_buying_gribnoy" class="form-inline">
+                        <div class="form-group">
+                            <input type="number" class="form-control" name="number_gribnoy" id="number_gribnoy">
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" id="submit_btn_gribnoy" class="btn btn-success"
+                                    data-product_id = "{{ product_image.product.id }}"
+                                    data-name = "{{ product_image.product.name }} "
+                                    data-price = "{{ product_image.product.price }}"
+                            >
+                                В корзину
+                            </button>
+                        </div>
+                    </form>
+                    {% endif %}
+
+
+                                                                    <!--  Борщ  -->
+                    {% if product_image.product.id == 6 %}
+                    <form id="form_buying_borsh" class="form-inline">
+                        <div class="form-group">
+                            <input type="number" class="form-control" name="number_borsh" id="number_borsh">
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" id="submit_btn_borsh" class="btn btn-success"
+                                    data-product_id = "{{ product_image.product.id }}"
+                                    data-name = "{{ product_image.product.name }}"
+                                    data-price = "{{ product_image.product.price }}"
+                            >
+                                В корзину
+                            </button>
+                        </div>
+                    </form>
+                    {% endif %}
+
+
+                                                                   <!--  Гречка с мясом  -->
+                    {% if product_image.product.id == 7 %}
+                    <form id="form_buying_grecha" class="form-inline">
+                        <div class="form-group">
+                            <input type="number" class="form-control" name="number_grecha" id="number_grecha">
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" id="submit_btn_grecha" class="btn btn-success"
+                                    data-product_id = "{{ product_image.product.id }}"
+                                    data-name = "{{ product_image.product.name }}"
+                                    data-price = "{{ product_image.product.price }}"
+                            >
+                                В корзину
+                            </button>
+                        </div>
+                    </form>
+                    {% endif %}
+
+
+                                                                  <!--  Пюре с котлетами  -->
+                    {% if product_image.product.id == 8 %}
+                    <form id="form_buying_kotleti" class="form-inline">
+                        <div class="form-group">
+                            <input type="number" class="form-control" name="number_kotleti" id="number_kotleti">
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" id="submit_btn_kotleti" class="btn btn-success"
+                                    data-product_id = "{{ product_image.product.id }}"
+                                    data-name = "{{ product_image.product.name }}"
+                                    data-price = "{{ product_image.product.price }}"
+                            >
+                                В корзину
+                            </button>
+                        </div>
+                    </form>
+                    {% endif %}
+
+
+                                                                 <!--  Голупцы  -->
+                    {% if product_image.product.id == 9 %}
+                    <form id="form_buying_golupci" class="form-inline">
+                        <div class="form-group">
+                            <input type="number" class="form-control" name="number_golupci" id="number_golupci">
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" id="submit_btn_golupci" class="btn btn-success"
+                                    data-product_id = "{{ product_image.product.id }}"
+                                    data-name = "{{ product_image.product.name }}"
+                                    data-price = "{{ product_image.product.price }}"
+                            >
+                                В корзину
+                            </button>
+                        </div>
+                    </form>
+                    {% endif %}
+
+
+                                                                  <!--  Кофе  -->
+                    {% if product_image.product.id == 10 %}
+                    <form id="form_buying_coffee" class="form-inline">
+                        <div class="form-group">
+                            <input type="number" class="form-control" name="number_coffee" id="number_coffee">
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" id="submit_btn_coffee" class="btn btn-success"
+                                    data-product_id = "{{ product_image.product.id }}"
+                                    data-name = "{{ product_image.product.name }}"
+                                    data-price = "{{ product_image.product.price }}"
+                            >
+                                В корзину
+                            </button>
+                        </div>
+                    </form>
+                    {% endif %}
+
+
+                                                                   <!--  Компот  -->
+                    {% if product_image.product.id == 11 %}
+                    <form id="form_buying_kompot" class="form-inline">
+                        <div class="form-group">
+                            <input type="number" class="form-control" name="number_kompot" id="number_kompot">
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" id="submit_btn_kompot" class="btn btn-success"
+                                    data-product_id = "{{ product_image.product.id }}"
+                                    data-name = "{{ product_image.product.name }}"
+                                    data-price = "{{ product_image.product.price }}"
+                            >
+                                В корзину
+                            </button>
+                        </div>
+                    </form>
+                    {% endif %}
+
+
+                                                                   <!--  Чай  -->
+                    {% if product_image.product.id == 3 %}
+                    <form id="form_buying_chai" class="form-inline">
+                        <div class="form-group">
+                            <input type="number" class="form-control" name="number_chai" id="number_chai">
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" id="submit_btn_chai" class="btn btn-success"
+                                    data-product_id = "{{ product_image.product.id }}"
+                                    data-name = "{{ product_image.product.name }}"
+                                    data-price = "{{ product_image.product.price }}"
+                            >
+                                В корзину
+                            </button>
+                        </div>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+{% endblock %}
